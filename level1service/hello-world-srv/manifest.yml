@@ -1,0 +1,31 @@
+---
+
+applications:
+
+- name: hdiconf
+
+path: ./gen/db
+
+no-route: true
+
+memory: 256M
+
+health-check-type: process
+
+services:
+
+- practisehdi
+
+  
+
+- name: capms1
+
+path: ./
+
+no-route: true
+
+memory: 256M
+
+services:
+
+- practisehdi
