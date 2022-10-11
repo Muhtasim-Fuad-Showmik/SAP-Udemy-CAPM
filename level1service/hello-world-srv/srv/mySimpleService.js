@@ -76,14 +76,14 @@ module.exports = srv => {
 
     srv.on("CREATE", "InsertStudent", async (req, res) => {
         let data = {
-            "email": req.data.email,
-            "first_name": req.data.first_name,
-            "last_name": req.data.last_name,
-            "date_sign_up": req.data.date_sign_up
+            "email": "" + req.data.email,
+            "first_name": "" + req.data.first_name,
+            "last_name": "" + req.data.last_name,
+            "date_sign_up": "" + req.data.date_sign_up
         };
         let returnData = await cds.run(
             INSERT(data).into(Students)
         );
-        console.log(returnData);
+        return data;
     });
 };

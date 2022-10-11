@@ -27,8 +27,8 @@
         "type": "pickString",
         "id": "service",
         "description": "SRV to start",
-        "options": ["level1service/udemy-cap"],
-        "default": "level1service/udemy-cap"
+        "options": ["level1service/hello-world-srv"],
+        "default": "level1service/hello-world-srv"
       }
     ]
 }
