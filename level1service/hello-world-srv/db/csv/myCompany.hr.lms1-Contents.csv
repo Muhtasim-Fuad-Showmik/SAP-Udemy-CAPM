@@ -1,4 +1,4 @@
-ID;url;date_published;content_type;course
+ID;url;date_published;content_type;course_ID
 2001;www.udemy.com/ui5/one-way-binding;2019-10-10;PDF;1
 2002;www.udemy.com/ui5/two-way-binding;2019-10-10;PDF;1
 2003;www.udemy.com/sap/data-modelling;2019-10-15;Video;2

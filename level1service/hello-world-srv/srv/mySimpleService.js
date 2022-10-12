@@ -1,7 +1,7 @@
 this.new = "Fuad";
 const { Students } = cds.entities("myCompany.hr.lms");
 
-module.exports = srv => {
+module.exports["exportSRV"] = srv => {
     //There are four kinds of services: on, to, before and after
     /**
      * on: works upon hitting the API
@@ -97,4 +97,22 @@ module.exports = srv => {
             "email": req.data.email
         };
     });
+};
+
+module.exports["exportStructure"] = srv => {
+    // srv.on("READ", "GetStudent", (req, res) => {
+    //     console.log("Inside lms1:GetStudent");
+    // });
+
+    // srv.on("READ", "GetCourse", (req, res) => {
+    //     console.log("Inside lms1:GetCourse");
+    // });
+
+    // srv.on("READ", "GetEnrollment", (req, res) => {
+    //     console.log("Inside lms1:GetEnrollment");
+    // });
+
+    // srv.on("READ", "GetContent", (req, res) => {
+    //     console.log("Inside lms1:GetContent");
+    // });
 };
