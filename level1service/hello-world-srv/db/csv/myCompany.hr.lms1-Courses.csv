@@ -1,0 +1,4 @@
+ID;course_name;course_url;course_duration;course_price;published_status
+1;Learn UI5;https://www.udemy.com/ui5;10;192.8;true
+2;Learn SAP;https://www.udemy.com/sap;18;292.8;true
+3;Learn CDS;https://www.udemy.com/cds;6;200.99;true

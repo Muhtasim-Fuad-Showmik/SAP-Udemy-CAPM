@@ -11,6 +11,7 @@ entity Contents {
 entity Courses {
     key ID: Integer;
     course_name: String(40);
+    course_url: String(1024);
     course_duration: DecimalFloat;
     course_price: Decimal(5, 2);
     published_status: Boolean;
