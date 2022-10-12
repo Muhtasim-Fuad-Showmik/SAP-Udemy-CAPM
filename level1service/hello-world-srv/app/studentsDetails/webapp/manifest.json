@@ -1,83 +1,106 @@
 {
-    "_version": "1.8.0",
-    "sap.app": {
-      "id": "student",
-      "type": "application",
-      "title": "Students Details",
-      "description": "studentsDetails",
-      "dataSources": {
-        "exportStructure": {
-          "uri": "/exportStructure/",
-          "type": "OData",
-          "settings": {
-            "odataVersion": "4.0"
-          }
-        }
-      }
-    },
-    "sap.ui5": {
-      "dependencies": {
-        "libs": {
-          "sap.fe": {}
-        }
-      },
-      "models": {
-        "": {
-          "dataSource": "exportStructure",
-          "settings": {
-            "synchronizationMode": "None",
-            "operationMode": "Server",
-            "autoExpandSelect": false,
-            "earlyRequests": false,
-            "groupProperties": {
-              "default": {
-                "submit": "Auto"
-              }
-            }
-          }
-        }
-      },
-      "routing": {
-        "routes": [ {
-          "pattern": ":?query:",
-          "name": "Student",
-          "target": "Student"
-        },
-        {
-          "pattern": "GetStudent({key}):?query:",
-          "name": "StudentDetail",
-          "target": "StudentDetail"
-        }
-        ],
-        "targets": {
-          "Student": {
-              "type": "Component",
-              "id": "Student",
-              "name": "sap.fe.templates.ListReport",
-              "options": {
-                "settings": {
-                  "entitySet": "GetStudent",
-                  "navigation": {
-                    "GetStudent": {
-                      "detail":{ 
-                        "route": "StudentDetail"
-                      }
-                    }
-                  }
-                }
-              }
-            },
-			"StudentDetail": {
-				"type": "Component",
-				"id": "Student",
-				"name": "sap.fe.templates.ObjectPage",
-				"options": {
-				  "settings": {
-					"entitySet": "GetStudent"
-				  }
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "student",
+		"type": "application",
+		"title": "Students Details",
+		"description": "studentsDetails",
+		"dataSources": {
+			"exportStructure": {
+				"uri": "/exportStructure/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
 				}
-			  }
-        }
-      }
-    }
-  }
+			}
+		}
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"libs": {
+				"sap.fe": {}
+			}
+		},
+		"models": {
+			"": {
+				"dataSource": "exportStructure",
+				"settings": {
+					"synchronizationMode": "None",
+					"operationMode": "Server",
+					"autoExpandSelect": false,
+					"earlyRequests": false,
+					"groupProperties": {
+						"default": {
+							"submit": "Auto"
+						}
+					}
+				}
+			}
+		},
+		"routing": {
+			"routes": [
+				{
+					"pattern": ":?query:",
+					"name": "Student",
+					"target": "Student"
+				},
+				{
+					"pattern": "GetStudent({key}):?query:",
+					"name": "StudentDetail",
+					"target": "StudentDetail"
+				},
+				{
+					"pattern": "GetStudent({key})/enrollment:?query:",
+					"name": "Enrollment",
+					"target": "Enrollment"
+				}
+			],
+			"targets": {
+				"Student": {
+					"type": "Component",
+					"id": "Student",
+					"name": "sap.fe.templates.ListReport",
+					"options": {
+						"settings": {
+							"entitySet": "GetStudent",
+							"navigation": {
+								"GetStudent": {
+									"detail": {
+										"route": "StudentDetail"
+									}
+								}
+							}
+						}
+					}
+				},
+				"StudentDetail": {
+					"type": "Component",
+					"id": "Student",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "GetStudent",
+							"navigation": {
+								"enrollment": {
+									"detail": {
+										"route": "Enrollment"
+									}
+								}
+							}
+						}
+					}
+				},
+				"Enrollment": {
+					"type": "Component",
+					"id": "Enrollment",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "GetEnrollment"
+						}
+					}
+				}
+			}
+		}
+	}
+}

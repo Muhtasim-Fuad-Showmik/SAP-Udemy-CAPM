@@ -37,6 +37,11 @@ annotate studentService.GetStudent with @(
                     $Type: 'UI.ReferenceFacet',
                     Label: 'Personal Information',
                     Target: '@UI.FieldGroup#PersonalStudentInfo'
+                },
+                {
+                    $Type: 'UI.ReferenceFacet',
+                    Label: 'Enrollment Details',
+                    Target: 'enrollment/@UI.LineItem'
                 }
             ],
             FieldGroup#PersonalStudentInfo: {
@@ -59,5 +64,20 @@ annotate studentService.GetStudent with @(
                     }
                 ]
             }
+        }
+    );
+
+    annotate studentService.GetEnrollment with @(
+        UI:{
+            LineItem  : [
+                {
+                    Label: 'Enrollment ID',
+                    Value: ID
+                },
+                {
+                    Label: 'Course ID',
+                    Value: course_ID
+                }
+            ],
         }
     );
