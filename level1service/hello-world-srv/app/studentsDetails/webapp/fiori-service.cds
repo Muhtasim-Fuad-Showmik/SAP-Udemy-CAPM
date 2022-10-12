@@ -29,7 +29,7 @@ annotate studentService.GetStudent with @(
                 },
                 Description: {
                     Value: email,
-                    Label: 'First Name'
+                    Label: 'Email'
                 }
             },
             Facets: [
@@ -79,5 +79,47 @@ annotate studentService.GetStudent with @(
                     Value: course_ID
                 }
             ],
+            Facets: [
+                {
+                    $Type: 'UI.ReferenceFacet',
+                    Label: 'Course Details',
+                    Target: 'course/@UI.FieldGroup#CourseDetails'
+                }
+            ]
+        }
+    );
+
+    annotate studentService.GetCourse with @(
+        UI:{
+            HeaderInfo : {
+                TypeName: 'Course',
+                TypeNamePlural: 'Courses',
+                Title: {
+                    Value: ID
+                },
+                Description: {
+                    Value: course_name
+                }
+            },
+            FieldGroup#CourseDetails: {
+                Data: [
+                    {
+                        Label: 'Course Name',
+                        Value: course_name
+                    },
+                    {
+                        Label: 'Course Duration in Hours',
+                        Value: course_duration
+                    },
+                    {
+                        Label: 'Course Price in USD',
+                        Value: course_price
+                    },
+                    {
+                        Label: 'Course URL',
+                        Value: course_url
+                    }
+                ]
+            }
         }
     );
