@@ -100,7 +100,7 @@ module.exports["exportSRV"] = srv => {
 };
 
 module.exports["exportStructure"] = srv => {
-    // srv.on("READ", "GetStudent", (req, res) => {
+    // srv.after("READ", "GetStudent", (req, res) => {
     //     console.log("Inside lms1:GetStudent");
     // });
 

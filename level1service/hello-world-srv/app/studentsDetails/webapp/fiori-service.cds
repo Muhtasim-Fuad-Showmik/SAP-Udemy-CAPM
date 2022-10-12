@@ -1,6 +1,6 @@
-using exportSRV as studentService from '../../../srv/mySimpleService';
+using exportStructure as studentService from '../../../srv/mySimpleService';
 
-annotate studentService.Students with @(
+annotate studentService.GetStudent with @(
         UI:{
             SelectionFields: [email],
             LineItem  : [
@@ -31,6 +31,33 @@ annotate studentService.Students with @(
                     Value: email,
                     Label: 'First Name'
                 }
+            },
+            Facets: [
+                {
+                    $Type: 'UI.ReferenceFacet',
+                    Label: 'Personal Information',
+                    Target: '@UI.FieldGroup#PersonalStudentInfo'
+                }
+            ],
+            FieldGroup#PersonalStudentInfo: {
+                Data: [
+                    {
+                        Label: 'First Name',
+                        Value: first_name
+                    },
+                    {
+                        Label: 'Last Name',
+                        Value: last_name
+                    },
+                    {
+                        Label: 'Email',
+                        Value: email
+                    },
+                    {
+                        Label: 'Date Sign Up',
+                        Value: date_sign_up
+                    }
+                ]
             }
         }
     );

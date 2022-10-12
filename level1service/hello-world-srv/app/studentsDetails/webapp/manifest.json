@@ -6,8 +6,8 @@
       "title": "Students Details",
       "description": "studentsDetails",
       "dataSources": {
-        "exportSRV": {
-          "uri": "/exportSRV/",
+        "exportStructure": {
+          "uri": "/exportStructure/",
           "type": "OData",
           "settings": {
             "odataVersion": "4.0"
@@ -23,7 +23,7 @@
       },
       "models": {
         "": {
-          "dataSource": "<dataSources Name>",
+          "dataSource": "exportStructure",
           "settings": {
             "synchronizationMode": "None",
             "operationMode": "Server",
@@ -42,6 +42,11 @@
           "pattern": ":?query:",
           "name": "Student",
           "target": "Student"
+        },
+        {
+          "pattern": "GetStudent({key}):?query:",
+          "name": "StudentDetail",
+          "target": "StudentDetail"
         }
         ],
         "targets": {
@@ -51,10 +56,27 @@
               "name": "sap.fe.templates.ListReport",
               "options": {
                 "settings": {
-                  "entitySet": "exportSRV"
+                  "entitySet": "GetStudent",
+                  "navigation": {
+                    "GetStudent": {
+                      "detail":{ 
+                        "route": "StudentDetail"
+                      }
+                    }
+                  }
                 }
               }
-            }
+            },
+			"StudentDetail": {
+				"type": "Component",
+				"id": "Student",
+				"name": "sap.fe.templates.ObjectPage",
+				"options": {
+				  "settings": {
+					"entitySet": "GetStudent"
+				  }
+				}
+			  }
         }
       }
     }
