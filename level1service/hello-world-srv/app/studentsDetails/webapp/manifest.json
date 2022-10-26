@@ -27,7 +27,7 @@
 				"settings": {
 					"synchronizationMode": "None",
 					"operationMode": "Server",
-					"autoExpandSelect": false,
+					"autoExpandSelect": true,
 					"earlyRequests": false,
 					"groupProperties": {
 						"default": {
@@ -53,6 +53,11 @@
 					"pattern": "GetStudent({key})/enrollment:?query:",
 					"name": "Enrollment",
 					"target": "Enrollment"
+				},
+				{
+					"pattern": "GetStudent({key})/enrollment({key1}):?query:",
+					"name": "EnrollmentDetail",
+					"target": "EnrollmentDetail"
 				},
 				{
 					"pattern": "GetStudent({key})/enrollment({key1})/course:?query:",
@@ -98,6 +103,16 @@
 				"Enrollment": {
 					"type": "Component",
 					"id": "Enrollment",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "GetEnrollment"
+						}
+					}
+				},
+				"EnrollmentDetail": {
+					"type": "Component",
+					"id": "EnrollmentDetail",
 					"name": "sap.fe.templates.ObjectPage",
 					"options": {
 						"settings": {

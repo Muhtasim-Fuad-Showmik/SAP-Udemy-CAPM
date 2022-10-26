@@ -79,6 +79,16 @@ annotate studentService.GetStudent with @(
                     Value: course_ID
                 }
             ],
+            HeaderInfo : {
+                TypeName: 'Course',
+                TypeNamePlural: 'Courses',
+                Title: {
+                    Value: ID
+                },
+                Description: {
+                    Value: course_ID
+                }
+            },
             Facets: [
                 {
                     $Type: 'UI.ReferenceFacet',
