@@ -1,0 +1,143 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "student",
+		"type": "application",
+		"title": "Students Details",
+		"description": "studentsDetails",
+		"dataSources": {
+			"exportStructure": {
+				"uri": "/exportStructure/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "4.0"
+				}
+			}
+		}
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"libs": {
+				"sap.fe": {}
+			}
+		},
+		"models": {
+			"": {
+				"dataSource": "exportStructure",
+				"settings": {
+					"synchronizationMode": "None",
+					"operationMode": "Server",
+					"autoExpandSelect": true,
+					"earlyRequests": false,
+					"groupProperties": {
+						"default": {
+							"submit": "Auto"
+						}
+					}
+				}
+			}
+		},
+		"routing": {
+			"routes": [
+				{
+					"pattern": ":?query:",
+					"name": "Student",
+					"target": "Student"
+				},
+				{
+					"pattern": "GetStudent({key}):?query:",
+					"name": "StudentDetail",
+					"target": "StudentDetail"
+				},
+				{
+					"pattern": "GetStudent({key})/enrollment:?query:",
+					"name": "Enrollment",
+					"target": "Enrollment"
+				},
+				{
+					"pattern": "GetStudent({key})/enrollment({key1}):?query:",
+					"name": "EnrollmentDetail",
+					"target": "EnrollmentDetail"
+				},
+				{
+					"pattern": "GetStudent({key})/enrollment({key1})/course:?query:",
+					"name": "CourseDetails",
+					"target": "CourseDetails"
+				}
+			],
+			"targets": {
+				"Student": {
+					"type": "Component",
+					"id": "Student",
+					"name": "sap.fe.templates.ListReport",
+					"options": {
+						"settings": {
+							"entitySet": "GetStudent",
+							"navigation": {
+								"GetStudent": {
+									"detail": {
+										"route": "StudentDetail"
+									}
+								}
+							}
+						}
+					}
+				},
+				"StudentDetail": {
+					"type": "Component",
+					"id": "Student",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "GetStudent",
+							"navigation": {
+								"enrollment": {
+									"detail": {
+										"route": "Enrollment"
+									}
+								}
+							}
+						}
+					}
+				},
+				"Enrollment": {
+					"type": "Component",
+					"id": "Enrollment",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "GetEnrollment"
+						}
+					}
+				},
+				"EnrollmentDetail": {
+					"type": "Component",
+					"id": "EnrollmentDetail",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "GetEnrollment",
+							"navigation": {
+								"course": {
+									"detail": {
+										"route": "CourseDetails"
+									}
+								}
+							}
+						}
+					}
+				},
+				"CourseDetails": {
+					"type": "Component",
+					"id": "CourseDetails",
+					"name": "sap.fe.templates.ObjectPage",
+					"options": {
+						"settings": {
+							"entitySet": "GetCourse"
+						}
+					}
+				}
+			}
+		}
+	}
+}
