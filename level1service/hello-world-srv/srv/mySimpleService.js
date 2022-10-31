@@ -51,8 +51,8 @@ module.exports["exportSRV"] = srv => {
         let studentEmail = req.data.email;
 
         let result = await cds.run(UPDATE(Students).set({
-            first_name: firstName
-        }).where({ first_name: "Mr. " + firstName }));
+            first_name: "Mr. " + firstName
+        }).where({ first_name: firstName }));
         console.log(result);
 
         // Transactions
